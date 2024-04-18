@@ -1,0 +1,28 @@
+version: '3.4'
+
+networks:
+  dev:
+    driver: bridge 
+
+services:      
+  quran_tgbot_ui:
+    container_name: quran_tgbot_ui
+    ports:
+      - "5701:4000"
+    build:
+      context: frontend/.
+      dockerfile: Dockerfile
+    networks:
+      - dev
+      
+  quran_tgbot_backend:
+    container_name: quran_tgbott_backend
+    ports:
+      - "5702:5000"
+    build:
+      context: backend/.
+      dockerfile: Dockerfile
+    environment:
+      ConnectionStrings__Default: "Server=83.229.84.237;Port=5435;Database=quran_tgbotDb;User Id=postgres;Password=some1234;Pooling=true;Maximum Pool Size=1024;"
+    networks:
+      - dev
