@@ -1,5 +1,5 @@
+import 'dotenv/config';
 import {Telegraf, Markup} from 'telegraf';
-require('dotenv').config();
 
 const token = process.env.TELEGRAM_BOT_TOKEN;
 const webUrl = 'https://quran-api.mistudio.dev/data/pagehtml/1';
